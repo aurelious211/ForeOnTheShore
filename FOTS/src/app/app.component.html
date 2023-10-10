@@ -1,0 +1,38 @@
+<div class="toolbar" role="banner">
+  <h1>FOTS</h1>
+</div>
+<div class="content" role="main" (load)="readExcelFile($event)">
+  <h2>Leaderboard</h2>
+  <p>Please provide sheet to populate the table:</p>
+  <input type="file" (change)="readExcelFile($event)">
+  <table class="table" *ngIf="users.length>0">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Player Name</th>
+        <th>Team</th>
+        <th>Points</th>
+        <th>Points Back</th>
+        <th>Skins</th>
+        <th>Scoring Average</th>
+        <th>Playoff Target</th>
+        <th>Rounds Played</th>
+        <th>DOTS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let u of users">
+        <td>{{u['#']}}</td>
+        <td>{{u['Player Name']}}</td>
+        <td>{{u['Team']}}</td>
+        <td>{{u['Points']}}</td>
+        <td>{{u['Points Back']}}</td>
+        <td>{{u['Skins']}}</td>
+        <td>{{u['Scoring Average']}}</td>
+        <td>{{u['Playoff Target']}}</td>
+        <td>{{u['Rounds Played']}}</td>
+        <td>{{u['DOTS']}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
