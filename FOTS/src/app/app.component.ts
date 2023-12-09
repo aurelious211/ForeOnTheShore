@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import * as XLSX from 'xlsx';
+import leaderBoardData from "./Files/leaderBoardData.json"
 
 @Component({
   selector: 'app-root',
@@ -8,21 +8,20 @@ import * as XLSX from 'xlsx';
 })
 export class AppComponent {
   title = 'FOTS';
+  leaderboardList:{
+      id:number,
+      playerName:string,
+      team:string,
+      points:number,
+      pointsBack:number,
+      skins:number,
+      scoringAverage:number,
+      playoffTarget:number,
+      roundsPlayed:number,
+      dots:number
+  }[]=leaderBoardData;
 
-  users:any
-
-  readExcelFile(e:any){
+  addPlayerData(): void {
     
-    const file = e.target.files[0];
-    let reader = new FileReader();
-    reader.readAsArrayBuffer(file);
-    reader.onload = ()=> {
-      let data = reader.result;
-      let workbook = XLSX.read(data,{type:'array'});
-      const sheetName = workbook.SheetNames[0];
-      const leaderboardData = workbook.Sheets[sheetName];
-      this.users = XLSX.utils.sheet_to_json(leaderboardData,{raw:true})
-    }
-     
   }
 }
