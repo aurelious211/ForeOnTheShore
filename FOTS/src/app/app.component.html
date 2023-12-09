@@ -1,11 +1,9 @@
 <div class="toolbar" role="banner">
   <h1>FOTS</h1>
 </div>
-<div class="content" role="main" (load)="readExcelFile($event)">
+<div class="content" role="main">
   <h2>Leaderboard</h2>
-  <p>Please provide sheet to populate the table:</p>
-  <input type="file" (change)="readExcelFile($event)">
-  <table class="table" *ngIf="users.length>0">
+  <table class="table">
     <thead>
       <tr>
         <th>#</th>
@@ -21,17 +19,17 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let u of users">
-        <td>{{u['#']}}</td>
-        <td>{{u['Player Name']}}</td>
-        <td>{{u['Team']}}</td>
-        <td>{{u['Points']}}</td>
-        <td>{{u['Points Back']}}</td>
-        <td>{{u['Skins']}}</td>
-        <td>{{u['Scoring Average']}}</td>
-        <td>{{u['Playoff Target']}}</td>
-        <td>{{u['Rounds Played']}}</td>
-        <td>{{u['DOTS']}}</td>
+      <tr *ngFor="let data of leaderboardList">
+       <td>{{data.id}}</td>
+       <td>{{data.playerName}}</td>
+       <td>{{data.team}}</td>
+       <td>{{data.points}}</td>
+       <td>{{data.pointsBack}}</td>
+       <td>{{data.skins}}</td>
+       <td>{{data.scoringAverage}}</td>
+       <td>{{data.playoffTarget}}</td>
+       <td>{{data.roundsPlayed}}</td>
+       <td>{{data.dots}}</td>
       </tr>
     </tbody>
   </table>
